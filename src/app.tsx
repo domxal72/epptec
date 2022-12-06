@@ -54,37 +54,41 @@ const urls = [
 
 export default function App() {
   const [posts, setPosts] = useState<IPosts[] | null>(null);
+  const [comments, setComments] = useState<IPosts[] | null>(null);
 
   async function fetchURLs() {
     // const [posts, users, comments]: [IPosts[], IUsers[], IComments[]] =
     const [posts, users, comments] = await Promise.all(
       urls.map((url) => fetch(url).then((res) => res.json()))
     );
-    // add user name to post
-    const newData = posts.map((post) => {
-      const [username] = users.filter((user) => user.id === post.userId);
-      return { ...post, username: username.username };
+    // add user name and number of comments to post
+    const updatedPosts = posts.map((post) => {
+      let [user] = users.filter((user) => user.id === post.userId);
+      let postCommnents = comments.filter(({ postId }) => post.id === postId);
+      return {
+        ...post,
+        username: user.username,
+        comments: postCommnents.length,
+      };
+      // ...seems all posts have just 5 comments
     });
-
-    console.log(newData);
-  }
-
-  async function fetchPosts() {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-    const postsData = await res.json();
-    setPosts(postsData);
+    // TODO mutate data in state after fetch function
+    setPosts(updatedPosts);
+    setComments(comments);
+    console.log(updatedPosts);
   }
 
   useEffect(() => {
-    fetchPosts();
     fetchURLs();
     return;
   }, []);
 
   return (
+    // TODO fix router loading
     <Router>
       <div>
         <ul>
+          {/* TODO styling... */}
           <li>
             <Link to='/'>Home</Link>
           </li>
@@ -98,7 +102,7 @@ export default function App() {
           <Home posts={posts} />
         </Route>
         <Route exact path='/detail/:id'>
-          <Detail posts={posts} />
+          <Detail posts={posts} comments={comments} />
         </Route>
         <Route path='*'>
           <NotFound />
