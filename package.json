@@ -1,0 +1,45 @@
+{
+  "name": "epptec",
+  "version": "1.0.0",
+  "description": "test task",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "webpack serve --port 3000",
+    "build": "webpack"
+  },
+  "author": "dom",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-transform-typescript": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.6",
+    "eslint-loader": "^4.0.2",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "node-sass": "^6.0.0",
+    "sass-loader": "^12.1.0",
+    "source-map-loader": "^3.0.0",
+    "style-loader": "^2.0.0",
+    "ts-loader": "^9.2.3",
+    "typescript": "^4.3.4",
+    "webpack": "^5.40.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "json-server": "^0.17.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.0",
+    "styled-system": "^5.1.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}
