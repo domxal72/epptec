@@ -5,6 +5,11 @@ export interface IPosts {
   body: string;
 }
 
+export interface IUpdatedPosts extends IPosts{
+  username: string;
+  comments: [];
+}
+
 export interface IUsers {
   id: number;
   name: string;

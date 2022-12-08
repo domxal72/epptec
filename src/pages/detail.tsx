@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 
-export default function Detail({ posts, comments }) {
+export default function Detail({ posts }) {
   const { id } = useParams();
 
   const [post] = posts.filter((post) => {
@@ -24,17 +24,15 @@ export default function Detail({ posts, comments }) {
         </div>
         <p className='text-lg font-semibold mb-4'>Comments</p>
         <ul>
-          {comments
-            .filter(({ postId }) => postId === post.id)
-            .map(({ id, body, name, email }) => {
-              return (
-                <li key={id} className='mb-6'>
-                  <p className='text-base mb-1 font-semibold'>{name}</p>
-                  <p className='text-sm text-gray-500 mb-1 italic'>{email}</p>
-                  <p className='text-sm'>{body}</p>
-                </li>
-              );
-            })}
+          {post.comments.map(({ id, body, name, email }) => {
+            return (
+              <li key={id} className='mb-6'>
+                <p className='text-base mb-1 font-semibold'>{name}</p>
+                <p className='text-sm text-gray-500 mb-1 italic'>{email}</p>
+                <p className='text-sm'>{body}</p>
+              </li>
+            );
+          })}
         </ul>
       </div>
     );

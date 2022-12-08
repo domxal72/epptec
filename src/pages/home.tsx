@@ -15,7 +15,7 @@ export default function Posts({ posts }) {
               <div className='flex justify-between'>
                 <p className='text-base italic gray-500'>{username}</p>
                 <p className='text-base italic gray-500'>
-                  Comments: {comments}
+                  Comments: {comments.length}
                 </p>
               </div>
             </div>

@@ -4,7 +4,7 @@ import Home from "./pages/home";
 import Detail from "./pages/detail";
 import NotFound from "./pages/not-found";
 
-export default function RouterContainer({ posts, comments }) {
+export default function RouterContainer({ posts }) {
   return (
     <div className='container mx-auto px-4 max-w-lg font-sans'>
       <Router>
@@ -13,7 +13,7 @@ export default function RouterContainer({ posts, comments }) {
             <Home posts={posts} />
           </Route>
           <Route exact path='/detail/:id'>
-            <Detail posts={posts} comments={comments} />
+            <Detail posts={posts} />
           </Route>
           <Route path='*'>
             <NotFound />
